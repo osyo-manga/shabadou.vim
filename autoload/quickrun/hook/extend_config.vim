@@ -29,7 +29,7 @@ endfunction
 
 
 function! quickrun#hook#extend_config#new()
-	return s:hook
+	return deepcopy(s:hook)
 endfunction
 
 
