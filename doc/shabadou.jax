@@ -28,7 +28,7 @@ shabadou.txt	汎用的な quickrun-hook のプラグイン集です
 
 
 ==============================================================================
-hook/eanbe について				*shabadou-enable-point*
+hook/enable について				*shabadou-enable-point*
 
 |shabadou| に定義されている |quickrun-hook| のいくつかは
 各 |quickrun-hook-point| ごとに enable を設定することが出来ます。
