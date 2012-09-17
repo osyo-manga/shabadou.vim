@@ -1,0 +1,87 @@
+shabadou.txt	汎用的な quickrun-hook のプラグイン集です
+
+
+==============================================================================
+概要						*shabadou-introduction*
+
+|shabadou| は thinca 氏が作成された |quickrun| の汎用的な
+|quickrun-hook| が定義されているプラグインです。
+
+- vim-quickrun - github : https://github.com/thinca/vim-quickrun
+
+
+						*shabadou-synopsis*
+
+
+==============================================================================
+使い方						*shabadou-usage*
+
+使い方は |quickrun-hook| と同じようにして使用しますが、enable の使い方がちょっ
+と違います。
+
+>
+	" QuickRun 終了時に quickfix を閉じる
+	:QuickRun -hook/close_quickfix/enable_exit 1
+<
+
+このように各 |quickrun-hook-point| ごとに有効にすることが出来ます、
+
+
+==============================================================================
+hook/eanbe について				*shabadou-enable-point*
+
+|shabadou| に定義されている |quickrun-hook| のいくつかは
+各 |quickrun-hook-point| ごとに enable を設定することが出来ます。
+
+
+Example >
+	" on_exit を enable にする
+	:QuickRun -hook/close_quickfix/enable_exit 1
+<
+
+このようにして、任意の |quickrun-hook-point| で hook を有効にする事が出来ま
+す。
+
+
+==============================================================================
+定義されている quickrun-hook 一覧です		*shabadou-hook*
+
+基本的には全て enable 0 で定義されているので、使用する場合には
+|g:quickrun_config| 等に追加するなどして使用して下さい。
+
+
+- "close_quickfix"				*shabadou-hook/close_quickfix*
+  quickfix ウィンドウを閉じます。
+  |:QuickfixStatusEnable| を呼び出します。
+  |shabadou-enable-point| に対応しています。
+
+
+- "quickfix_stateus_enable"			*shabadou-hook/quickfix_stateus_enable*
+  |:QuickfixStatusEnable| を呼び出します。
+  |shabadou-enable-point| に対応しています。
+
+
+- "hier_update"					*shabadou-hook/hier_update*
+  |:HierUpdate| を呼び出します。
+  |shabadou-enable-point| に対応しています。
+
+
+- "extend_config"				*shabadou-hook/extend_config*
+  config が構築された後（|quickrun-module.init()|）に指定された config の設定
+  を追加します。
+
+  オプション ~
+  force			デフォルト: 0
+  元の config を target で指定された type で上書きするか。
+  1 の場合は上書きする。
+
+  target			デフォルト: ""
+	ベースとなる type を指定します。
+Example >
+	" g:quickrun_config.cpp/_ の設定を追加する
+	:QuickRun -hook/extend_config/target "cpp/_" -hook/extend_config/enable 1
+<
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
