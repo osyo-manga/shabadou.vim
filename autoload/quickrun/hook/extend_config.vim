@@ -10,8 +10,6 @@ endfunction
 
 
 let s:hook = {
-\	"name" : "extend_config",
-\	"kind" : "hook",
 \	"config" : {
 \		"enable" : 0,
 \		"target" : "",
