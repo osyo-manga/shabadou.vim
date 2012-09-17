@@ -4,6 +4,11 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
+function! s:quickrun_config()
+	return copy(extend(copy(g:quickrun#default_config), get(g:, "quickrun_config", {})))
+endfunction
+
+
 let s:hook = {
 \	"name" : "extend_config",
 \	"kind" : "hook",
