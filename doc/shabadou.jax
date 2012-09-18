@@ -124,7 +124,7 @@ Example >
   設定された |quickrun-hook-point| にコマンド出力を行います。
 
   オプション ~
-  output_{point}			デフォルト: ""
+  output_{point}	デフォルト: ""
 	{point} 時に設定した文字列をコマンド出力します。
 Example >
 	" コマンドの成功時に "success"
@@ -137,6 +137,55 @@ Example >
 <
 
 
+- "unite_quickfix"				*shabadou-hook/unite_quickfix*
+  unite-quickfix を起動させます。
+  事前に unite-quickfix を導入しておく必要があります。
+
+  unite-quickfix - github : https://github.com/osyo-manga/unite-quickfix
+
+  |shabadou-enable-point| に対応していますが、一部挙動が変わっています。
+
+  オプション~
+  enable_failure	デフォルト: 0
+  enable_success	デフォルト: 0
+	この2つのオプションを有効にした場合、on_exit 時に出力を行います。
+
+  enable_exist_data	デフォルト: 0
+	1 の場合、出力データがある場合に on_exit のタイミングで
+	unite-quickfix が起動します。
+
+  unite_options		デフォルト: "-no-quit -direction=botright -winheight=12 -max-multi-lines=32"
+	unite-quickfix に渡す unite.vim のオプションを設定します。
+
+  no_focus		デフォルト: 0
+	1 の場合、unite-quickfix にフォーカスが移動しません。
+
+
+- "close_unite_quickfix"			*shabadou-hook/close_unite_quickfix*
+  unite-quickfix のバッファウィンドウを閉じます。
+  |shabadou-enable-point| に対応しています。
+
+  オプション~
+  buffer_name	デフォルト: "quickrun-hook-unite-quickfix"
+	unite-quickfix のバッファ名を指定します。
+	|shabadou-hook/unite_quickfix| でバッファ名を変更した場合はこちらも設
+	定するようにして下さい。
+
+
+- "redraw_unite_quickfix"			*shabadou-hook/redraw_unite_quickfix*
+  unite-quickfix を更新します。
+  |shabadou-enable-point| に対応しています。
+
+  オプション~
+  buffer_name	デフォルト: "quickrun-hook-unite-quickfix"
+	unite-quickfix のバッファ名を指定します。
+	|shabadou-hook/unite_quickfix| でバッファ名を変更した場合はこちらも設
+	定するようにして下さい。
+
+
+
+
+
 ==============================================================================
 設定例						*shabadou-examples*
 
@@ -147,7 +196,7 @@ Example >
 >
 	:QuickRun -outputter
 	\  multi:buffer:quickfix
-	\  -hook/close_buffer/enable_failure 1
+	\  -hook/close_buffer/enable_failure   1
 	\  -hook/close_quickfix/enable_success 1
 <
 
