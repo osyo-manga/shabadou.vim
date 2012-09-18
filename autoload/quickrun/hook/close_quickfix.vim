@@ -3,28 +3,33 @@ scriptencoding utf-8
 let s:save_cpo = &cpo
 set cpo&vim
 
-let s:hook = shabadou#make_hook_points_module({
-\	"name" : "close_quickfix",
-\	"kind" : "hook",
-\	"config" : {
-\		"enable_exit" : 0
-\	}
-\})
-
-" function! s:hook.priority(point)
-" 	return a:point == "exit"
-" \		? -999
-" \		: 0
+" let s:hook = shabadou#make_hook_points_module({
+" \	"name" : "close_quickfix",
+" \	"kind" : "hook",
+" \	"config" : {
+" \		"enable_exit" : 0
+" \	}
+" \})
+" 
+" function! s:hook.hook_apply(context)
+" 	silent :cclose
 " endfunction
-
-function! s:hook.hook_apply(context)
-	:cclose
-endfunction
-
+" 
+" 
+" 
+" function! quickrun#hook#close_quickfix#new()
+" 	return deepcopy(s:hook)
+" endfunction
 
 
 function! quickrun#hook#close_quickfix#new()
-	return deepcopy(s:hook)
+	let hook = shabadou#make_hook_command({
+\		"config" : {
+\			"enable_exit" : 1,
+\			"hook_command" : ":cclose"
+\		}
+\	})
+	return deepcopy(hook)
 endfunction
 
 
