@@ -4,7 +4,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
-let s:hook = s:make_hook_points_module({
+let s:hook = shabadou#make_hook_points_module({
 \	"name" : "close_quickfix",
 \	"kind" : "hook",
 \	"config" : {

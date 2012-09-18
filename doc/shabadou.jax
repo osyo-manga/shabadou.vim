@@ -52,8 +52,17 @@ Example >
 
 - "close_quickfix"				*shabadou-hook/close_quickfix*
   quickfix ウィンドウを閉じます。
-  |:QuickfixStatusEnable| を呼び出します。
   |shabadou-enable-point| に対応しています。
+
+
+- "close_quickfix"				*shabadou-hook/close_buffer*
+  |quickrun-module-outputter/buffer| ウィンドウを閉じます。
+  |shabadou-enable-point| に対応しています。
+
+  オプション ~
+  enable_empty_data	デフォルト: 0
+	データが出力されなかった場合に有効にするかを設定します。
+	1 の場合は、on_exit のタイミングでバッファウィンドウを閉じます。
 
 
 - "quickfix_stateus_enable"			*shabadou-hook/quickfix_stateus_enable*
@@ -71,16 +80,17 @@ Example >
   を追加します。
 
   オプション ~
-  force			デフォルト: 0
-  元の config を target で指定された type で上書きするか。
-  1 の場合は上書きする。
-
   target			デフォルト: ""
 	ベースとなる type を指定します。
 Example >
 	" g:quickrun_config.cpp/_ の設定を追加する
 	:QuickRun -hook/extend_config/target "cpp/_" -hook/extend_config/enable 1
 <
+
+  force			デフォルト: 0
+	元の config を target で指定された type で上書きするかを決めます。
+	1 の場合は上書きする。
+
 
 
 ==============================================================================

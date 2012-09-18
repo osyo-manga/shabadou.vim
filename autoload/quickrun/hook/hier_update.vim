@@ -5,7 +5,7 @@ set cpo&vim
 
 
 function! quickrun#hook#hier_update#new()
-	let hook = s:make_hook_command({
+	let hook = shabadou#make_hook_command({
 \		"config" : {
 \			"enable_exit" : 1,
 \			"hook_command" : ":HierUpdate"

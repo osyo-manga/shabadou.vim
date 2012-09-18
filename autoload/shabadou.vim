@@ -41,7 +41,7 @@ endfunction
 
 
 function! shabadou#make_hook_command(base)
-	let hook = s:make_hook_points_module(a:base)
+	let hook = shabadou#make_hook_points_module(a:base)
 	let hook.config.hook_command = get(hook.config, "hook_command", "")
 	let hook.config.hook_args    = get(hook.config, "hook_args", "")
 
