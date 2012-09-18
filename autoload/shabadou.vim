@@ -22,7 +22,7 @@ function! shabadou#make_hook_points_module(base)
 
 	for point in points
 		let hook.config["enable_".point] = get(hook.config, "enable_".point, 0)
-" 		let hook.config["priority_".point] = 0
+		let hook.config["priority_".point] = get(hook.config, "priority_".point, 0)
 
 		execute ''
 \."			function! hook.on_".point."(...)\n"
@@ -30,11 +30,12 @@ function! shabadou#make_hook_points_module(base)
 \."					call self.hook_apply({ 'point' : '".point."', 'args' : a:000 })\n"
 \."				endif\n"
 \."			endfunction\n"
-	endfor
 	
-" 	function! hook.priority(point)
-" 		return self.config["priority_".a:point]
-" 	endfunction
+	endfor
+
+	function! hook.priority(point)
+		return self.config["priority_".a:point]
+	endfunction
 	
 	return hook
 endfunction
@@ -63,8 +64,9 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 	\	"aa_list" : a:aa_list,
 	\	"config" : {
 	\		"wait" : a:wait,
-	\		"enable" : 0
-	\}
+	\		"enable" : 0,
+	\		"priority_output" : 0
+	\	}
 	\}
 
 	function! hook.on_ready(session, context)
@@ -78,6 +80,15 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 		endif
 		echo self.aa_list[ self.index_counter / self.config.wait % len(self.aa_list) ]
 	endfunction
+
+	function! hook.priority(point)
+		return a:point == "output"
+	\		? self.config.priority_output
+	\		: 0
+	endfunction
+
+	
+
 	return hook
 endfunction
 
