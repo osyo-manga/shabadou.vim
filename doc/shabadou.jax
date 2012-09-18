@@ -47,7 +47,7 @@ Example >
 定義されている quickrun-hook 一覧です		*shabadou-hook*
 
 基本的には全て enable 0 で定義されているので、使用する場合には
-|g:quickrun_config| 等に追加するなどして使用して下さい。
+|g:quickrun_config| 等で enable 1 を定義するなどして使用して下さい。
 
 
 - "close_quickfix"				*shabadou-hook/close_quickfix*
@@ -105,6 +105,7 @@ Example >
   priority_output	デフォルト: 0
 	|quickrun-hook.priority| の優先順位を設定します。
 
+
 - "neco"					*shabadou-hook/neco*
   quickrun の実行中に猫が走り回ります。
   |quickrun-module-runner/vimproc| でなければ動作しません。
@@ -117,6 +118,23 @@ Example >
 
   priority_output	デフォルト: 0
 	|quickrun-hook.priority| の優先順位を設定します。
+
+
+- "echo"					*shabadou-hook/echo*
+  設定された |quickrun-hook-point| にコマンド出力を行います。
+
+  オプション ~
+  output_{point}			デフォルト: ""
+	{point} 時に設定した文字列をコマンド出力します。
+Example >
+	" コマンドの成功時に "success"
+	" コマンドの失敗時に "failure"
+	" を出力する
+	QuickRun
+	\   -hook/echo/enable 1
+	\   -hook/echo/output_success success
+	\   -hook/echo/output_failure failure
+<
 
 
 ==============================================================================
