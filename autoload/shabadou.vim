@@ -55,6 +55,33 @@ function! shabadou#make_hook_command(base)
 endfunction
 
 
+function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
+	let hook = {
+	\	"name" : a:name,
+	\	"kind" : "hook",
+	\	"index_counter" : 0,
+	\	"aa_list" : a:aa_list,
+	\	"config" : {
+	\		"wait" : a:wait,
+	\		"enable" : 0
+	\}
+	\}
+
+	function! hook.on_ready(session, context)
+		let self.index_counter = -2
+	endfunction
+
+	function! hook.on_output(session, context)
+		let self.index_counter += 1
+		if self.index_counter < 0
+			return
+		endif
+		echo self.aa_list[ self.index_counter / self.config.wait % len(self.aa_list) ]
+	endfunction
+	return hook
+endfunction
+
+
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

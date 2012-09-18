@@ -92,6 +92,42 @@ Example >
 	1 の場合は上書きする。
 
 
+- "inu"						*shabadou-hook/inu*
+  quickrun の実行中に犬が走り回ります（Ｕ＾ω＾）
+  |quickrun-module-runner/vimproc| でなければ動作しません。
+  アニメーション速度は runner/vimproc/updatetime に依存します。
+
+  オプション ~
+  wait			デフォルト: 4
+  	アニメーション速度の重みです。
+	アニメーション速度はこれを設定して調整して下さい。
+
+
+- "neco"					*shabadou-hook/neco*
+  quickrun の実行中に猫が走り回ります。
+  |quickrun-module-runner/vimproc| でなければ動作しません。
+  アニメーション速度は runner/vimproc/updatetime に依存します。
+
+  オプション ~
+  wait			デフォルト: 1
+  	アニメーション速度の重みです。
+	アニメーション速度はこれを設定して調整して下さい。
+
+
+==============================================================================
+設定例						*shabadou-examples*
+
+
+------------------------------------------------------------------------------
+実行に成功した場合は buffer を開き、失敗した場合は quickfix を開く
+
+>
+	:QuickRun -outputter
+	\  multi:buffer:quickfix
+	\  -hook/close_buffer/enable_failure 1
+	\  -hook/close_quickfix/enable_success 1
+<
+
 
 ==============================================================================
 vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
