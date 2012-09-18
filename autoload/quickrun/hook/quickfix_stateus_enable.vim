@@ -7,7 +7,6 @@ set cpo&vim
 function! quickrun#hook#quickfix_stateus_enable#new()
 	let hook = shabadou#make_hook_command({
 \		"config" : {
-\			"enable_exit" : 1,
 \			"hook_command" : ":QuickfixStatusEnable"
 \		}
 \	})

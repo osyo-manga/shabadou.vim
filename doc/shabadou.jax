@@ -183,7 +183,32 @@ Example >
 	定するようにして下さい。
 
 
+- "hi_hi_hi_"					*shabadou-hook/hi_hi_hi_*
+  『ﾋｰ!ﾋｰ!ﾋｰ!』アニメーション
+  |quickrun-module-runner/vimproc| でなければ動作しません。
+  アニメーション速度は runner/vimproc/updatetime に依存します。
 
+  オプション ~
+  wait			デフォルト: 1
+	アニメーション速度の重みです。
+	アニメーション速度はこれを設定して調整して下さい。
+
+  priority_output	デフォルト: 0
+	|quickrun-hook.priority| の優先順位を設定します。
+
+
+- "shabadoubi_touch_henshin"			*shabadou-hook/shabadoubi_touch_henshin*
+  『ｼｬﾊﾞﾄﾞｩﾋﾞﾀｯﾁﾍﾝｼｰﾝ!!』アニメーション
+  |quickrun-module-runner/vimproc| でなければ動作しません。
+  アニメーション速度は runner/vimproc/updatetime に依存します。
+
+  オプション ~
+  wait			デフォルト: 1
+	アニメーション速度の重みです。
+	アニメーション速度はこれを設定して調整して下さい。
+
+  priority_output	デフォルト: 0
+	|quickrun-hook.priority| の優先順位を設定します。
 
 
 ==============================================================================
