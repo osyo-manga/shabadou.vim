@@ -27,6 +27,7 @@ function! s:make_hook_echo()
 
 	for point in points
 		let hook.config["output_".point] = get(hook.config, "output_".point, "")
+		let hook.config["priority_".point] = get(hook.config, "priority_".point, 0)
 
 		execute ''
 \."			function! hook.on_".point."(...)\n"
@@ -35,6 +36,11 @@ function! s:make_hook_echo()
 \."				endif\n"
 \."			endfunction\n"
 	endfor
+
+	function! hook.priority(point)
+		return self.config["priority_".a:point]
+	endfunction
+
 	return hook
 endfunction
 
