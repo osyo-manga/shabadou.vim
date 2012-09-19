@@ -9,7 +9,8 @@ function! s:make_hook_echo()
 \		"name" : "echo",
 \		"kind" : "hook",
 \		"config" : {
-\			"enable" : 1,
+\			"enable" : 0,
+\			"enable_output_exit" : 0,
 \		}
 \	}
 
@@ -29,14 +30,17 @@ function! s:make_hook_echo()
 		let hook.config["output_".point] = get(hook.config, "output_".point, "")
 		let hook.config["priority_".point] = get(hook.config, "priority_".point, 0)
 
-		execute ''
+	execute ''
 \."			function! hook.on_".point."(...)\n"
 \."				if !empty(self.config.output_".point.")\n"
-\."					echo self.config.output_".point."\n"
+\."					if empty(self.config.output_exit) && self.config.enable_output_exit\n"
+\."						let self.config.output_exit = self.config.output_".point."\n"
+\."					else\n"
+\."						redraw | echo self.config.output_".point."\n"
+\."					endif\n"
 \."				endif\n"
 \."			endfunction\n"
 	endfor
-
 	function! hook.priority(point)
 		return self.config["priority_".a:point]
 	endfunction

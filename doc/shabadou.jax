@@ -146,6 +146,10 @@ Example >
 	\   -hook/echo/output_failure failure
 <
 
+  enable_output_exit	デフォルト: 0
+	1 の場合、output_{point} に設定した値が出力されます。
+	複数の output_{point} が設定されている場合、後から呼ばれた point が優
+	先して使用されます。
 
 - "unite_quickfix"				*shabadou-hook/unite_quickfix*
   unite-quickfix を起動させます。
