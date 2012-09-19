@@ -7,7 +7,6 @@ set cpo&vim
 function! quickrun#hook#close_quickfix#new()
 	let hook = shabadou#make_hook_command({
 \		"config" : {
-\			"enable_exit" : 1,
 \			"hook_command" : ":cclose"
 \		}
 \	})
