@@ -55,7 +55,7 @@ Example >
   |shabadou-enable-point| に対応しています。
 
 
-- "close_quickfix"				*shabadou-hook/close_buffer*
+- "close_buffer"				*shabadou-hook/close_buffer*
   |quickrun-module-outputter/buffer| ウィンドウを閉じます。
   |shabadou-enable-point| に対応しています。
 
