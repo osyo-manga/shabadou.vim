@@ -1,5 +1,15 @@
 shabadou.txt	汎用的な quickrun-hook のプラグイン集です
 
+==============================================================================
+目次						*shabadou-contents*
+
+概要				|shabadou-introduction|
+使い方				|shabadou-usage|
+hook/enable について		|shabadou-enable-point|
+定義されている quickrun-hook 一覧です				|shabadou-hook|
+設定例				|shabadou-examples|
+
+
 
 ==============================================================================
 概要						*shabadou-introduction*
@@ -130,7 +140,7 @@ Example >
 	" コマンドの成功時に "success"
 	" コマンドの失敗時に "failure"
 	" を出力する
-	QuickRun
+	:QuickRun
 	\   -hook/echo/enable 1
 	\   -hook/echo/output_success success
 	\   -hook/echo/output_failure failure
@@ -209,6 +219,32 @@ Example >
 
   priority_output	デフォルト: 0
 	|quickrun-hook.priority| の優先順位を設定します。
+
+
+- "output_config"				*shabadou-hook/output_config*
+  config の内容をコマンドに出力します。
+  |shabadou-enable-point| に対応しています。
+  最終的な config を出力するのであれば enable_normalized 1 を使用して下さい。
+
+  オプション ~
+  log			デフォルト: 0
+	1 の場合、出力を |message-history| に記録します。
+
+  wait			デフォルト: 0
+	1 の場合、入力待ちが発生します。
+
+
+- "output_command"				*shabadou-hook/output_command*
+  command の内容をコマンドに出力します。
+  |shabadou-enable-point| に対応しています。
+  最終的な command を出力するのであれば enable_ready 1 を使用して下さい。
+
+  オプション ~
+  log			デフォルト: 0
+	1 の場合、出力を |message-history| に記録します。
+
+  wait			デフォルト: 0
+	1 の場合、入力待ちが発生します。
 
 
 ==============================================================================
