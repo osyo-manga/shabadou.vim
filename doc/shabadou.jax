@@ -151,6 +151,7 @@ Example >
 	複数の output_{point} が設定されている場合、後から呼ばれた point が優
 	先して使用されます。
 
+
 - "unite_quickfix"				*shabadou-hook/unite_quickfix*
   unite-quickfix を起動させます。
   事前に unite-quickfix を導入しておく必要があります。
@@ -249,6 +250,21 @@ Example >
 
   wait			デフォルト: 0
 	1 の場合、入力待ちが発生します。
+
+
+- "copen"					*shabadou-hook/copen*
+  quickfix ウィンドウを開きます。
+  |shabadou-enable-point| に対応していますが、一部挙動が変わっています。
+
+  オプション~
+  enable_failure	デフォルト: 0
+  enable_success	デフォルト: 0
+	この2つのオプションを有効にした場合、on_exit 時に出力を行います。
+
+  enable_exist_data	デフォルト: 0
+	1 の場合、出力データがある場合に on_exit のタイミングで
+	quickfix ウィンドウが起動します。
+
 
 
 ==============================================================================
