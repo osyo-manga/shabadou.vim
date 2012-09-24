@@ -10,7 +10,6 @@ hook/enable について		|shabadou-enable-point|
 設定例				|shabadou-examples|
 
 
-
 ==============================================================================
 概要						*shabadou-introduction*
 
@@ -115,6 +114,9 @@ Example >
   priority_output	デフォルト: 0
 	|quickrun-hook.priority| の優先順位を設定します。
 
+  redraw	デフォルト: 0
+	1の場合、echo 後に 'redraw' を行います。
+
 
 - "neco"					*shabadou-hook/neco*
   quickrun の実行中に猫が走り回ります。
@@ -128,6 +130,9 @@ Example >
 
   priority_output	デフォルト: 0
 	|quickrun-hook.priority| の優先順位を設定します。
+
+  redraw	デフォルト: 0
+	1の場合、echo 後に 'redraw' を行います。
 
 
 - "echo"					*shabadou-hook/echo*
@@ -211,6 +216,9 @@ Example >
   priority_output	デフォルト: 0
 	|quickrun-hook.priority| の優先順位を設定します。
 
+  redraw	デフォルト: 0
+	1の場合、echo 後に 'redraw' を行います。
+
 
 - "shabadoubi_touch_henshin"			*shabadou-hook/shabadoubi_touch_henshin*
   『ｼｬﾊﾞﾄﾞｩﾋﾞﾀｯﾁﾍﾝｼｰﾝ!!』アニメーション
@@ -224,6 +232,9 @@ Example >
 
   priority_output	デフォルト: 0
 	|quickrun-hook.priority| の優先順位を設定します。
+
+  redraw	デフォルト: 0
+	1の場合、echo 後に 'redraw' を行います。
 
 
 - "output_config"				*shabadou-hook/output_config*

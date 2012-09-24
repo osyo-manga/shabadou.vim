@@ -65,7 +65,8 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 	\	"config" : {
 	\		"wait" : a:wait,
 	\		"enable" : 0,
-	\		"priority_output" : 0
+	\		"priority_output" : 0,
+	\		"redraw" : 0,
 	\	}
 	\}
 
@@ -79,7 +80,9 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 			return
 		endif
 		echo self.aa_list[ self.index_counter / self.config.wait % len(self.aa_list) ]
-		redraw
+		if self.config.redraw
+			redraw
+		endif
 	endfunction
 
 	function! hook.priority(point)
