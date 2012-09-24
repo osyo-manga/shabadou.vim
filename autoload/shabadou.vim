@@ -79,6 +79,7 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 			return
 		endif
 		echo self.aa_list[ self.index_counter / self.config.wait % len(self.aa_list) ]
+		redraw
 	endfunction
 
 	function! hook.priority(point)
