@@ -277,6 +277,16 @@ Example >
 	quickfix ウィンドウが起動します。
 
 
+- "quickfix_replate_tempname_to_bufnr"		  *shabadou-hook/quickfix_replate_tempname_to_bufnr*
+  |quickrun.vim| で一時ファイルに出力されていた場合、'quickfix' のバッファ番号
+  を一時ファイルではなく、|quickrun.vim| を実行したバッファ番号に置き換えま
+  す。
+  |shabadou-enable-point| に対応しています。
+
+  オプション~
+  bufnr			デフォルト: |quickrun.vim| を起動させたバッファ番号
+	'quickfix' のバッファ番号を置き換えるバッファ番号です。
+
 
 ==============================================================================
 設定例						*shabadou-examples*
