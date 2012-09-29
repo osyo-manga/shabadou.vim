@@ -28,14 +28,16 @@ endfunction
 
 function! s:hook.hook_apply(context)
 	let session = a:context.args[0]
+
+	let tempname = session.config.srcfile
 	if !has_key(session, "_temp_names")
+\	|| index(session._temp_names, tempname) == -1
+		echom "homU"
 		return
 	endif
 	let qflist = getqflist()
 	let bufnr  = self.config.bufnr
-	for tempname in session._temp_names
-		call map(qflist, "s:replace_temp_to_bufnr(v:val, tempname, bufnr)")
-	endfor
+	call map(qflist, "s:replace_temp_to_bufnr(v:val, tempname, bufnr)")
 	call setqflist(qflist)
 endfunction
 
