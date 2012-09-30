@@ -32,7 +32,6 @@ function! s:hook.hook_apply(context)
 	let tempname = session.config.srcfile
 	if !has_key(session, "_temp_names")
 \	|| index(session._temp_names, tempname) == -1
-		echom "homU"
 		return
 	endif
 	let qflist = getqflist()
