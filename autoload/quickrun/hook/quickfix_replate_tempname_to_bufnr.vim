@@ -19,7 +19,7 @@ endfunction
 
 
 function! s:replace_temp_to_bufnr(qf, tempname, bufnr)
-	if bufname(a:qf.bufnr) ==# a:tempname
+	if fnamemodify(bufname(a:qf.bufnr), ":p") ==# a:tempname
 		let a:qf.bufnr = a:bufnr
 	endif
 	return a:qf
@@ -29,9 +29,9 @@ endfunction
 function! s:hook.hook_apply(context)
 	let session = a:context.args[0]
 
-	let tempname = session.config.srcfile
+	let tempname = fnamemodify(session.config.srcfile, ":p")
 	if !has_key(session, "_temp_names")
-\	|| index(session._temp_names, tempname) == -1
+\	|| index(map(copy(session._temp_names), 'fnamemodify(v:val, ":p")'), tempname) == -1
 		return
 	endif
 	let qflist = getqflist()
