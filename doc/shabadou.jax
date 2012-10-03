@@ -53,6 +53,25 @@ Example >
 
 
 ==============================================================================
+hook/priority について				*shabadou-priority-point*
+
+|shabadou| に定義されている |quickrun-hook| のいくつかは
+各 |quickrun-hook-point| ごとに priority を設定することが出来ます。
+
+
+Example >
+	" タブページに移動してから、ウィンドウに移動する
+	:QuickRun
+\		-hook/back_tabpage/enable_exit 1
+\		-hook/back_window/enable_exit 1
+\		-hook/back_tabpage/priority_exit 1
+\		-hook/back_window/priority_exit  1
+<
+
+このようにして、任意の順番で hook を処理することが出来ます。
+
+
+==============================================================================
 定義されている quickrun-hook 一覧です		*shabadou-hook*
 
 基本的には全て enable 0 で定義されているので、使用する場合には
@@ -62,11 +81,13 @@ Example >
 - "close_quickfix"				*shabadou-hook/close_quickfix*
   quickfix ウィンドウを閉じます。
   |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
 
 
 - "close_buffer"				*shabadou-hook/close_buffer*
   |quickrun-module-outputter/buffer| ウィンドウを閉じます。
   |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
 
   オプション ~
   enable_empty_data	デフォルト: 0
@@ -82,6 +103,7 @@ Example >
 - "hier_update"					*shabadou-hook/hier_update*
   |:HierUpdate| を呼び出します。
   |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
 
 
 - "extend_config"				*shabadou-hook/extend_config*
@@ -164,6 +186,7 @@ Example >
   unite-quickfix - github : https://github.com/osyo-manga/unite-quickfix
 
   |shabadou-enable-point| に対応していますが、一部挙動が変わっています。
+  |shabadou-priority-point| に対応しています。
 
   オプション~
   enable_failure	デフォルト: 0
@@ -184,6 +207,7 @@ Example >
 - "close_unite_quickfix"			*shabadou-hook/close_unite_quickfix*
   unite-quickfix のバッファウィンドウを閉じます。
   |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
 
   オプション~
   buffer_name	デフォルト: "quickrun-hook-unite-quickfix"
@@ -241,6 +265,7 @@ Example >
   config の内容をコマンドに出力します。
   |shabadou-enable-point| に対応しています。
   最終的な config を出力するのであれば enable_normalized 1 を使用して下さい。
+  |shabadou-priority-point| に対応しています。
 
   オプション ~
   log			デフォルト: 0
@@ -254,6 +279,7 @@ Example >
   command の内容をコマンドに出力します。
   |shabadou-enable-point| に対応しています。
   最終的な command を出力するのであれば enable_ready 1 を使用して下さい。
+  |shabadou-priority-point| に対応しています。
 
   オプション ~
   log			デフォルト: 0
@@ -266,6 +292,7 @@ Example >
 - "copen"					*shabadou-hook/copen*
   quickfix ウィンドウを開きます。
   |shabadou-enable-point| に対応していますが、一部挙動が変わっています。
+  |shabadou-priority-point| に対応しています。
 
   オプション~
   enable_failure	デフォルト: 0
@@ -279,13 +306,44 @@ Example >
 
 - "quickfix_replate_tempname_to_bufnr"		  *shabadou-hook/quickfix_replate_tempname_to_bufnr*
   |quickrun.vim| で一時ファイルに出力されていた場合、'quickfix' のバッファ番号
-  を一時ファイルではなく、|quickrun.vim| を実行したバッファ番号に置き換えま
+  を一時ファイルではなく、|quickrun.vim| を起動したバッファ番号に置き換えま
   す。
   |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
 
   オプション~
   bufnr			デフォルト: |quickrun.vim| を起動させたバッファ番号
 	'quickfix' のバッファ番号を置き換えるバッファ番号です。
+
+
+- "back_buffer"					  *shabadou-hook/back_buffer*
+  |quickrun.vim| を起動させたバッファを開きます。
+  |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
+
+  オプション~
+  bufnr			デフォルト: |quickrun.vim| を起動させたバッファ番号
+	開くバッファ番号です。
+
+
+- "back_window"					  *shabadou-hook/back_window*
+  |quickrun.vim| を起動させたウィンドウに移動します。
+  |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
+
+  オプション~
+  winnr			デフォルト: |quickrun.vim| を起動させたウィンドウ番号
+	移動するウィンドウ番号です。
+
+
+- "back_tabpage"				  *shabadou-hook/back_window*
+  |quickrun.vim| を起動させたタブページに移動します。
+  |shabadou-enable-point| に対応しています。
+  |shabadou-priority-point| に対応しています。
+
+  オプション~
+  tabpagenr		デフォルト: |quickrun.vim| を起動させたタブ番号
+	移動するタブ番号です。
 
 
 ==============================================================================
@@ -300,6 +358,20 @@ Example >
 	\  multi:buffer:quickfix
 	\  -hook/close_buffer/enable_failure   1
 	\  -hook/close_quickfix/enable_success 1
+<
+
+
+------------------------------------------------------------------------------
+|quickrun.vim| の起動後に元のウィンドウ位置に戻る
+
+
+Example >
+	" タブページに移動してから、ウィンドウに移動する
+	:QuickRun
+\		-hook/back_tabpage/enable_exit 1
+\		-hook/back_window/enable_exit 1
+\		-hook/back_tabpage/priority_exit 1
+\		-hook/back_window/priority_exit  1
 <
 
 
