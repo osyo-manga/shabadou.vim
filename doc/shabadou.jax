@@ -336,7 +336,7 @@ Example >
 	移動するウィンドウ番号です。
 
 
-- "back_tabpage"				  *shabadou-hook/back_window*
+- "back_tabpage"				  *shabadou-hook/back_tabpage*
   |quickrun.vim| を起動させたタブページに移動します。
   |shabadou-enable-point| に対応しています。
   |shabadou-priority-point| に対応しています。
