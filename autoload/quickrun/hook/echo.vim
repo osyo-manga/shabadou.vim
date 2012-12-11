@@ -42,7 +42,7 @@ function! s:make_hook_echo()
 \."			endfunction\n"
 	endfor
 	function! hook.priority(point)
-		return self.config["priority_".a:point]
+		return get(self.config, "priority_".a:point, 0)
 	endfunction
 
 	return hook

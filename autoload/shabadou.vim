@@ -26,7 +26,7 @@ function! shabadou#make_hook_points_module(base)
 
 		execute ''
 \."			function! hook.on_".point."(...)\n"
-\."				if self.config.enable_".point." && has_key(self, 'hook_apply')\n"
+\."				if get(self.config, 'enable_'.".string(point).", 0) && has_key(self, 'hook_apply')\n"
 \."					call self.hook_apply({ 'point' : '".point."', 'args' : a:000 })\n"
 \."				endif\n"
 \."			endfunction\n"
@@ -34,7 +34,7 @@ function! shabadou#make_hook_points_module(base)
 	endfor
 
 	function! hook.priority(point)
-		return self.config["priority_".a:point]
+		return get(self.config, "priority_".a:point, 0)
 	endfunction
 	
 	return hook
@@ -90,8 +90,6 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 	\		? self.config.priority_output
 	\		: 0
 	endfunction
-
-	
 
 	return hook
 endfunction
