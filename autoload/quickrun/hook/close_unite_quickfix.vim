@@ -14,7 +14,9 @@ let s:hook = shabadou#make_hook_points_module({
 
 
 function! s:hook.hook_apply(context)
-	silent execute ":UniteClose" self.config.buffer_name
+	if exists(":UniteClose")
+		silent execute ":UniteClose" self.config.buffer_name
+	endif
 endfunction
 
 

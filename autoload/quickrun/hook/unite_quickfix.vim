@@ -37,9 +37,11 @@ endfunction
 
 
 function! s:hook.hook_apply(context)
-	silent execute ":Unite quickfix -buffer-name=quickrun-hook-unite-quickfix "
-	\	.self.config.unite_options
-	\	.(self.config.no_focus ? " -no-focus " : "")
+	if exists(":Unite")
+		silent execute ":Unite quickfix -buffer-name=quickrun-hook-unite-quickfix "
+		\	.self.config.unite_options
+		\	.(self.config.no_focus ? " -no-focus " : "")
+	endif
 endfunction
 
 
