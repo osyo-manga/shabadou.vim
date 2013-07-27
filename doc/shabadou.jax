@@ -346,6 +346,25 @@ Example >
 	移動するタブ番号です。
 
 
+- "vim_vimlint"				 	*shabadou-hook/vim_vimlint*
+  vim-vimlint を外部コマンドとして実行するための |quickrun-option-exec| を設定
+  します。
+  syngan/vim-vimlint - https://github.com/syngan/vim-vimlint
+
+  これは |quickrun-option-exec| が空の文字列の場合にのみ処理されます。
+
+  オプション~
+  vimlint_path		デフォルト: ""
+  	vimlint プラグインへのパスです。
+	この値が空の文字列であれば 'runtimepath' に設定されているパスが使用さ
+	れます。
+
+  vimlparser_path	デフォルト: ""
+	vimlparser プラグインへのパスです。
+	この値が空の文字列であれば 'runtimepath' に設定されているパスが使用さ
+	れます。
+
+
 ==============================================================================
 設定例						*shabadou-examples*
 
