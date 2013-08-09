@@ -95,7 +95,7 @@ Example >
 	1 の場合は、on_exit のタイミングでバッファウィンドウを閉じます。
 
 
-- "quickfix_stateus_enable"			*shabadou-hook/quickfix_stateus_enable*
+- "quickfix_status_enable"			*shabadou-hook/quickfix_status_enable*
   |:QuickfixStatusEnable| を呼び出します。
   |shabadou-enable-point| に対応しています。
 
