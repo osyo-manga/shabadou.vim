@@ -4,7 +4,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
-function! quickrun#hook#quickfix_stateus_enable#new()
+function! quickrun#hook#quickfix_status_enable#new()
 	let hook = shabadou#make_hook_command({
 \		"config" : {
 \			"hook_command" : ":QuickfixStatusEnable"
