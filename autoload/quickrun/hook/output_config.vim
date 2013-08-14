@@ -20,7 +20,7 @@ function! s:hook.hook_apply(context)
 	if exists(":PP")
 		execute (self.config.log ? "PP!" : "PP"). " config"
 	else
-		echo string(config)
+		execute (self.config.log ? "echom" : "echo"). " config"
 	endif
 	if self.config.wait
 		let n = input("wait...please any input :")
