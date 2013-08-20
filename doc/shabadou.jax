@@ -196,6 +196,27 @@ Example >
 	1の場合、echo で出力を行います。
 
 
+- "nuko"						*shabadou-hook/nuko*
+  quickrun の実行中にぬこが走り回ります(≡ΦωΦ)
+  |quickrun-module-runner/vimproc| でなければ動作しません。
+  アニメーション速度は runner/vimproc/updatetime に依存します。
+
+  オプション ~
+  wait			デフォルト: 4
+	アニメーション速度の重みです。
+	アニメーション速度はこれを設定して調整して下さい。
+
+  priority_output	デフォルト: 0
+	|quickrun-hook.priority| の優先順位を設定します。
+
+  redraw	デフォルト: 0
+	1の場合、echo 後に 'redraw' を行います。
+
+  echo		デフォルト: 1
+	1の場合、echo で出力を行います。
+
+
+
 - "echo"					*shabadou-hook/echo*
   設定された |quickrun-hook-point| にコマンド出力を行います。
 
