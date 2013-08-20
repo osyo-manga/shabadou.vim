@@ -13,13 +13,10 @@ hook/enable について		|shabadou-enable-point|
 ==============================================================================
 概要						*shabadou-introduction*
 
-|shabadou| は thinca 氏が作成された |quickrun| の汎用的な
+*shabadou.vim* は thinca 氏が作成された |quickrun| の汎用的な
 |quickrun-hook| が定義されているプラグインです。
 
 - vim-quickrun - github : https://github.com/thinca/vim-quickrun
-
-
-						*shabadou-synopsis*
 
 
 ==============================================================================
@@ -34,6 +31,25 @@ hook/enable について		|shabadou-enable-point|
 <
 
 このように各 |quickrun-hook-point| ごとに有効にすることが出来ます、
+
+
+==============================================================================
+インターフェース				*shabadou-interface*
+
+
+------------------------------------------------------------------------------
+関数						*shabadou-functions*
+
+shabadou#get_anim_output({name})		*shabadou#get_anim_output()*
+	{name} が最後に出力した文字列を返します。
+	|:QuickRun| 中以外の時には空の文字列を返します。
+	{name} には以下のアニメーションを出力する |shabadou-hook| の名前が渡せ
+	ます。
+	- |shabadou-hook/hi_hi_hi_|
+	- |shabadou-hook/shabadoubi_touch_henshin|
+	- |shabadou-hook/inu|
+	- |shabadou-hook/neco|
+
 
 
 ==============================================================================
@@ -139,6 +155,9 @@ Example >
   redraw	デフォルト: 0
 	1の場合、echo 後に 'redraw' を行います。
 
+  echo		デフォルト: 1
+	1の場合、echo で出力を行います。
+
 
 - "neco"					*shabadou-hook/neco*
   quickrun の実行中に猫が走り回ります。
@@ -155,6 +174,9 @@ Example >
 
   redraw	デフォルト: 0
 	1の場合、echo 後に 'redraw' を行います。
+
+  echo		デフォルト: 1
+	1の場合、echo で出力を行います。
 
 
 - "echo"					*shabadou-hook/echo*
@@ -243,6 +265,9 @@ Example >
   redraw	デフォルト: 0
 	1の場合、echo 後に 'redraw' を行います。
 
+  echo		デフォルト: 1
+	1の場合、echo で出力を行います。
+
 
 - "shabadoubi_touch_henshin"			*shabadou-hook/shabadoubi_touch_henshin*
   『ｼｬﾊﾞﾄﾞｩﾋﾞﾀｯﾁﾍﾝｼｰﾝ!!』アニメーション
@@ -259,6 +284,9 @@ Example >
 
   redraw	デフォルト: 0
 	1の場合、echo 後に 'redraw' を行います。
+
+  echo		デフォルト: 1
+	1の場合、echo で出力を行います。
 
 
 - "output_config"				*shabadou-hook/output_config*
@@ -387,11 +415,12 @@ Example >
 Example >
 	" タブページに移動してから、ウィンドウに移動する
 	:QuickRun
-\		-hook/back_tabpage/enable_exit 1
-\		-hook/back_window/enable_exit 1
-\		-hook/back_tabpage/priority_exit 1
-\		-hook/back_window/priority_exit  1
+	\	-hook/back_tabpage/enable_exit 1
+	\	-hook/back_window/enable_exit 1
+	\	-hook/back_tabpage/priority_exit 1
+	\	-hook/back_window/priority_exit  1
 <
+
 
 
 ==============================================================================

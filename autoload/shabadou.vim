@@ -56,6 +56,11 @@ function! shabadou#make_hook_command(base)
 endfunction
 
 
+let s:anim_outputs = {}
+function! shabadou#get_anim_output(name)
+	return get(s:anim_outputs, a:name, "")
+endfunction
+
 function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 	let hook = {
 	\	"name" : a:name,
@@ -67,11 +72,17 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 	\		"enable" : 0,
 	\		"priority_output" : 0,
 	\		"redraw" : 0,
+	\		"echo" : 1,
 	\	}
 	\}
 
 	function! hook.on_ready(session, context)
 		let self.index_counter = -2
+		let s:anim_outputs[self.name] = ""
+	endfunction
+
+	function! hook.sweep(...)
+		let s:anim_outputs[self.name] = ""
 	endfunction
 
 	function! hook.on_output(session, context)
@@ -79,7 +90,11 @@ function! shabadou#make_quickrun_hook_anim(name, aa_list, wait)
 		if self.index_counter < 0
 			return
 		endif
-		echo self.aa_list[ self.index_counter / self.config.wait % len(self.aa_list) ]
+		let output = self.aa_list[ self.index_counter / self.config.wait % len(self.aa_list) ]
+		if self.config.echo
+			echo output
+		endif
+		let s:anim_outputs[self.name] = output
 		if self.config.redraw
 			redraw
 		endif
