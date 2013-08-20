@@ -51,6 +51,23 @@ shabadou#get_anim_output({name})		*shabadou#get_anim_output()*
 	- |shabadou-hook/neco|
 
 
+					*shabadou#make_quickrun_hook_anim()*
+shabadou#make_quickrun_hook_anim({name}, {aalist}, {wait})
+	アニメーションを行う {name} という名前の |quickrun-module| を生成し
+	ます。
+	{aalist} にはアニメーションする文字列のリストを、{wait} にはアニメー
+	ション速度の重みを設定します。
+	この関数で生成した |quickrun-module| は |quickrun#module#register()|
+	へと登録することができます。
+	生成したモジュールは |shabadou-hook/inu| などと同じ使い方ができます。
+Example: >
+	call quickrun#module#register(s:make_quickrun_hook_anim(
+	\	"santi_pinch",
+	\	['＼(・ω・＼)　SAN値！', '　(／・ω・)／ピンチ！',],
+	\	12,
+	\), 1)
+<
+
 
 ==============================================================================
 hook/enable について				*shabadou-enable-point*
