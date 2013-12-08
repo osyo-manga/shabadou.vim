@@ -370,7 +370,7 @@ Example >
 	quickfix ウィンドウが起動します。
 
 
-- "quickfix_replate_tempname_to_bufnr"		  *shabadou-hook/quickfix_replate_tempname_to_bufnr*
+- "quickfix_replace_tempname_to_bufnr"		  *shabadou-hook/quickfix_replace_tempname_to_bufnr*
   |quickrun.vim| で一時ファイルに出力されていた場合、'quickfix' のバッファ番号
   を一時ファイルではなく、|quickrun.vim| を起動したバッファ番号に置き換えま
   す。

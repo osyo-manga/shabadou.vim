@@ -5,7 +5,7 @@ set cpo&vim
 
 
 let s:hook = shabadou#make_hook_points_module({
-\	"name" : "quickfix_replate_tempname_to_bufnr",
+\	"name" : "quickfix_replace_tempname_to_bufnr",
 \	"kind" : "hook",
 \	"config" : {
 \		"priority" : 0,
@@ -36,13 +36,12 @@ function! s:hook.hook_apply(context)
 	endif
 	let qflist = getqflist()
 	let bufnr  = self.config.bufnr
-	let tempname = fnamemodify(session.config.srcfile, ":p:t")
 	call map(qflist, "s:replace_temp_to_bufnr(v:val, tempname, bufnr)")
 	call setqflist(qflist)
 endfunction
 
 
-function! quickrun#hook#quickfix_replate_tempname_to_bufnr#new()
+function! quickrun#hook#quickfix_replace_tempname_to_bufnr#new()
 	return deepcopy(s:hook)
 endfunction
 
