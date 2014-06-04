@@ -10,8 +10,8 @@ let s:hook = shabadou#make_hook_points_module({
 \	"config" : {
 \		"enable_exist_data" : 0,
 \		"no_focus" : 0,
-\		"unite_options" : "-no-quit -direction=botright -winheight=12 -max-multi-lines=32"
-\		"unite_buffer_name" : "quickrun-hook-unite-quickfix"
+\		"unite_options" : "-no-quit -direction=botright -winheight=12 -max-multi-lines=32",
+\		"unite_buffer_name" : "quickrun-hook-unite-quickfix",
 \	}
 \})
 
