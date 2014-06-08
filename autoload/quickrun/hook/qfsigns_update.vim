@@ -4,7 +4,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
-function! quickrun#hook#qfsings_update#new()
+function! quickrun#hook#qfsigns_update#new()
 	let hook = shabadou#make_hook_command({
 \		"config" : {
 \			"hook_command" : ":QfsignsUpdate"
