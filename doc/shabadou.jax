@@ -61,11 +61,14 @@ shabadou#make_quickrun_hook_anim({name}, {aalist}, {wait})
 	へと登録することができます。
 	生成したモジュールは |shabadou-hook/inu| などと同じ使い方ができます。
 Example: >
-	call quickrun#module#register(s:make_quickrun_hook_anim(
+	call quickrun#module#register(shabadou#make_quickrun_hook_anim(
 	\	"santi_pinch",
 	\	['＼(・ω・＼)　SAN値！', '　(／・ω・)／ピンチ！',],
 	\	12,
 	\), 1)
+
+	" hook/santi_pinch/enable に 1 を設定すると有効になる
+	:QuickRun -hook/santi_pinch/enable 1
 <
 
 
