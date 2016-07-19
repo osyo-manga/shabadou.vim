@@ -266,7 +266,7 @@ Example >
   no_focus		デフォルト: 0
 	1 の場合、unite-quickfix にフォーカスが移動しません。
 
-  unite_options		デフォルト: "quickrun-hook-unite-quickfix"
+  unite_buffer_name	デフォルト: "quickrun-hook-unite-quickfix"
 	起動する unite.vim の |unite-options-buffer-name| になります。
 
 
